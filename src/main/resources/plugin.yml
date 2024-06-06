@@ -1,0 +1,12 @@
+name: BuildingServer
+version: '${project.version}'
+main: net.turniptales.buildingserver.BuildingServer
+api-version: '1.20'
+
+commands:
+  teleport:
+    usage: "/teleport <Player>"
+    aliases: [tp]
+  teleporthere:
+    usage: "/tphere <Player>"
+    aliases: [tphere]
