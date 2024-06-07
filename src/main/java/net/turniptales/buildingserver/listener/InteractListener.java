@@ -13,7 +13,7 @@ import static org.bukkit.Material.SPLASH_POTION;
 public class InteractListener implements Listener {
 
     @EventHandler
-    public void onThrow(PlayerInteractEvent event) {
+    public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction().isRightClick()) {
             ItemStack currentItem = event.getItem();
             if (nonNull(currentItem) && currentItem.getType().equals(SPLASH_POTION)) {
@@ -28,6 +28,8 @@ public class InteractListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         ItemStack currentItem = event.getCurrentItem();
-        if (nonNull(currentItem) && currentItem.getType().equals(SPLASH_POTION)) event.setCancelled(true);
+        if (nonNull(currentItem) && currentItem.getType().equals(SPLASH_POTION)) {
+            event.setCancelled(true);
+        }
     }
 }

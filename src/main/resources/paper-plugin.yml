@@ -1,0 +1,6 @@
+name: BuildingServer
+version: '${version}'
+main: net.turniptales.buildingserver.BuildingServer
+api-version: '1.20.6'
+description: A plugin for the TurnipTales Building server
+website: https://turniptales.net/

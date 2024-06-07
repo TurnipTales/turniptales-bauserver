@@ -1,23 +1,20 @@
 package net.turniptales.buildingserver.listener;
 
+import io.papermc.paper.event.player.AsyncChatEvent;
+import net.turniptales.buildingserver.ScoreBoard;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
+
+import static org.bukkit.Bukkit.broadcast;
 
 public class ChatListener implements Listener {
 
     @EventHandler
-    public void onWrite(final AsyncPlayerChatEvent e) {
-        final Player p = e.getPlayer();
-
-        if (p.hasPermission("prefix.admin")) {
-            e.setFormat("§4Admin §8| §7" + p.getName() + " §8»§7 " + e.getMessage());
-            return;
-        }
-        if (p.hasPermission("prefix.moderator")) e.setFormat("§3Moderator §8| §7" + p.getName() + " §8»§7 " + e.getMessage());
-        if (p.hasPermission("prefix.supporter")) e.setFormat("§bSupporter §8| §7" + p.getName() + " §8»§7 " + e.getMessage());
-        if (p.hasPermission("prefix.builder")) e.setFormat("§eBuilder §8| §7" + p.getName() + " §8»§7 " + e.getMessage());
-
+    public void onAsyncChat(AsyncChatEvent event) {
+        Player player = event.getPlayer();
+        ScoreBoard.PlayerListTeam playerListTeam = ScoreBoard.PlayerListTeam.getPlayerListTeam(player);
+        event.setCancelled(true);
+        broadcast(playerListTeam.getChatMessage(player, event.message()));
     }
 }
