@@ -2,7 +2,6 @@ package net.turniptales.buildingserver;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import static net.kyori.adventure.text.Component.empty;
@@ -11,11 +10,12 @@ import static net.kyori.adventure.text.format.NamedTextColor.DARK_GRAY;
 import static net.kyori.adventure.text.format.NamedTextColor.GRAY;
 import static net.kyori.adventure.text.format.NamedTextColor.RED;
 import static net.kyori.adventure.text.format.NamedTextColor.YELLOW;
+import static org.bukkit.Bukkit.getOnlinePlayers;
 
 public class ScoreBoard {
 
     public static void setAllPlayerTeams() {
-        Bukkit.getOnlinePlayers().forEach(player -> {
+        getOnlinePlayers().forEach(player -> {
             PlayerListTeam playerListTeam = PlayerListTeam.getPlayerListTeam(player);
             player.playerListName(playerListTeam.getPlayerListName(player));
         });
@@ -23,16 +23,13 @@ public class ScoreBoard {
 
     public enum PlayerListTeam {
 
-        ADMINISTRATOR("000_ADMINISTRATOR", "ADMIN", RED),
-        BUILDER("050_BUILDER", "Builder", YELLOW),
-        DEFAULT("100_DEFAULT", "", GRAY);
+        ADMINISTRATOR("Admin", RED),
+        BUILDER("Builder", YELLOW);
 
-        private final String playerListTeamName;
         private final String chatPrefix;
         private final NamedTextColor color;
 
-        PlayerListTeam(String playerListTeamName, String chatPrefix, NamedTextColor color) {
-            this.playerListTeamName = playerListTeamName;
+        PlayerListTeam(String chatPrefix, NamedTextColor color) {
             this.chatPrefix = chatPrefix;
             this.color = color;
         }
@@ -59,13 +56,7 @@ public class ScoreBoard {
         }
 
         public static PlayerListTeam getPlayerListTeam(Player player) {
-            if (player.hasPermission("prefix.admin")) {
-                return ADMINISTRATOR;
-            } else if (player.hasPermission("prefix.builder")) {
-                return BUILDER;
-            } else {
-                return DEFAULT;
-            }
+            return player.isOp() ? ADMINISTRATOR : BUILDER;
         }
     }
 }
