@@ -10,6 +10,7 @@ java.sourceCompatibility = VERSION_21
 plugins {
     id("java-library")
     id("io.papermc.paperweight.userdev") version "1.7.1"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
     id("xyz.jpenilla.run-paper") version "2.3.0"
 }
 
@@ -18,6 +19,12 @@ repositories {
 }
 
 dependencies {
+    api("org.springframework", "spring-webflux", "6.1.10")
+    api("com.google.code.gson", "gson", "2.11.0")
+
+    compileOnly("org.projectlombok", "lombok", "1.18.34")
+    annotationProcessor("org.projectlombok", "lombok", "1.18.34")
+
     paperweight.paperDevBundle("1.20.6-R0.1-SNAPSHOT")
 }
 
@@ -30,7 +37,7 @@ tasks {
         options.encoding = "UTF-8"
     }
 
-    jar {
+    shadowJar {
         archiveFileName.set("turniptales-buildingserver.jar")
     }
 
