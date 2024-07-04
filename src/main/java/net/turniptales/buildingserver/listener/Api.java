@@ -44,7 +44,8 @@ public class Api {
         }
 
         public boolean isBuilderLeader() {
-            return this.role.equals("ADMINISTRATOR") || role.equals("HEAD_OF_DEVELOPMENT") || role.equals("SENIOR_MODERATOR") || role.equals("TEAM_HEAD_BUILDER");
+            return this.role.equals("ADMINISTRATOR") || role.equals("HEAD_OF_DEVELOPMENT") || role.equals("SENIOR_MODERATOR") || role.equals(
+                    "TEAM_HEAD_BUILDER");
         }
     }
 }
