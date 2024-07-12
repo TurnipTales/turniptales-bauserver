@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    api("org.springframework", "spring-webflux", "6.1.10")
+    api("org.springframework", "spring-webflux", "6.1.11")
     api("com.google.code.gson", "gson", "2.11.0")
 
     compileOnly("org.projectlombok", "lombok", "1.18.34")
