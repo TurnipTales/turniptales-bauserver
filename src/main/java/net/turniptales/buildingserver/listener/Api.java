@@ -28,7 +28,7 @@ public class Api {
 
     private WebClient getClient(String url) {
         return WebClient.builder()
-                .baseUrl("http://localhost:7200/turniptalesapi/v1" + url)
+                .baseUrl("https://turniptales.net:7200/turniptalesapi/v1" + url)
                 .defaultHeader("Authorization", "Basic dHVybmlwdGFsZXMtYXBpdXNlcjoqYnp0OThjV3EvLCckOT41SEN7NlEtTycralZFZmprMQ==")
                 .codecs(codecs -> codecs
                         .defaultCodecs()
