@@ -19,13 +19,13 @@ repositories {
 }
 
 dependencies {
-    api("org.springframework", "spring-webflux", "6.1.10")
+    api("org.springframework", "spring-webflux", "6.1.11")
     api("com.google.code.gson", "gson", "2.11.0")
 
     compileOnly("org.projectlombok", "lombok", "1.18.34")
     annotationProcessor("org.projectlombok", "lombok", "1.18.34")
 
-    paperweight.paperDevBundle("1.20.6-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.21-R0.1-SNAPSHOT")
 }
 
 tasks {
@@ -51,6 +51,6 @@ tasks {
     }
 
     runServer {
-        minecraftVersion("1.20.6")
+        minecraftVersion("1.21")
     }
 }

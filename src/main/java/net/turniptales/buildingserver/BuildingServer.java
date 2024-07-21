@@ -22,16 +22,16 @@ public final class BuildingServer extends JavaPlugin {
     public static BuildingServer instance;
 
     @Override
+    public void onDisable() {
+        // Plugin shutdown logic
+    }
+
+    @Override
     public void onEnable() {
         instance = this;
         PluginManager pluginManager = getPluginManager();
         pluginManager.registerEvents(new JoinQuitListener(), this);
         pluginManager.registerEvents(new ChatListener(), this);
         pluginManager.registerEvents(new InteractListener(), this);
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
     }
 }
