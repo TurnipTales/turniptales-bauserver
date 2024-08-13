@@ -9,7 +9,7 @@ java.sourceCompatibility = VERSION_21
 
 plugins {
     id("java-library")
-    id("io.papermc.paperweight.userdev") version "1.7.1"
+    id("io.papermc.paperweight.userdev") version "1.7.2"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("xyz.jpenilla.run-paper") version "2.3.0"
 }
