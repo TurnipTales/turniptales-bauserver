@@ -25,7 +25,7 @@ dependencies {
     compileOnly("org.projectlombok", "lombok", "1.18.34")
     annotationProcessor("org.projectlombok", "lombok", "1.18.34")
 
-    paperweight.paperDevBundle("1.21-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
 }
 
 tasks {
@@ -51,6 +51,6 @@ tasks {
     }
 
     runServer {
-        minecraftVersion("1.21")
+        minecraftVersion("1.21.1")
     }
 }
